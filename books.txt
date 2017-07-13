@@ -1,0 +1,12 @@
+Harry Potter and The Sorcerer's Stone,J.K. Rowling,available
+Harry Potter and the Chamber of Secrets,J.K. Rowling,available
+Harry Potter and the Prisoner of Azkaban,J.K. Rowling,available
+Harry Potter and the Goblet of Fire,J.K. Rowling,available
+Harry Potter and the Order of the Phoenix,J.K. Rowling,available
+Harry Potter and the Half Blood Prince,J.K. Rowling,available
+Harry Potter and the Deathly Hallows,J.K. Rowling,available
+The Child Called It,Dave Pelzer,available
+Junie B. Jones and Her Big Fat Mouth,Barbara Park,available
+Ender's Game,Orson Scott Card,available
+Life of Pi,Yann Martel,unavailable
+Parable of the Sower,Octavia Butler,available
