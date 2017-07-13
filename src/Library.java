@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by chand on 7/12/2017.
  */
-public abstract class Library {
+public class Library {
 
     private String status;
     private LocalDate date;
