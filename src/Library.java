@@ -1,42 +1,50 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.io.*;
+import java.util.List;
 
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-
-/**
- * Created by chand on 7/12/2017.
- */
 public class Library {
+    ArrayList<LibraryItem> items = new <LibraryItem>ArrayList();
 
-    private String status;
-    private LocalDate date;
 
     public Library() {
-
+        getList();
     }
 
-    public LocalDate returnDate() {
-        date = LocalDate.now();
-        System.out.println(date);
-        //LocalDate.now().plusDays(14); This will add 14 days
-        return date;
+    public ArrayList<LibraryItem> getList() {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("books.txt"));
+            String readLine = bufferedReader.readLine();
+
+            while (readLine != null) {
+                String[] fileValues = readLine.split(",");
+                String titles = fileValues[0];
+                String authors = fileValues[1];
+                String availability = fileValues[2];
+
+                LibraryItem bookObject = new LibraryItem(titles, authors, availability);
+                items.add(bookObject);
+                readLine = bufferedReader.readLine();
+            }
+            bufferedReader.close();
+        } catch (Exception e) {
+            System.out.println("File not found");
+        }
+        return items;
     }
 
-    public String getStatus() {
-        return status;
+     public void searchTitle(String userInput){
+        for(int i = 0; i < items.size(); i++){
+            if(items.get(i).getTitle().equalsIgnoreCase(userInput)){
+                System.out.println(items.get(i).getTitle() + " by " + items.get(i).getTitle());
+            }
+        }
     }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void searchAuthor(String userInput){
+         for(int i = 0; i <items.size(); i++){
+             if(items.get(i).getAuthors().equalsIgnoreCase(userInput)){
+                 System.out.println(items.get(i).getTitle() + " by " + items.get(i).getTitle());
+             }
+         }
     }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
 }
-
