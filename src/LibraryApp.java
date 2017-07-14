@@ -7,16 +7,18 @@ import java.util.Scanner;
 public class LibraryApp {
     public static void main(String[] args) {
         Library library = new Library();
-        //Book book = new Book();
+
         Scanner scan = new Scanner(System.in);
         String yOrN = "";
         System.out.println("Welcome to The Error's Library!");
         System.out.println("Please select an option number from the menu");
         do {
+
             //System.out.println("Menu: \n1 -- Display library list\n2 -- Search the library\n3 -- Checkout item from library\n4 -- Return item to library\n5 -- End session");
             int input = Validator.getInt(scan,"Menu: \n1 -- Display library list\n2 " +
                     "-- Search the library\n3 -- Checkout item from library\n4 -- " +
                     "Return item to library\n5 -- End session", 1, 5);
+
 
             switch (input) {
                 case 1:
@@ -29,11 +31,13 @@ public class LibraryApp {
                     System.out.println("\n" + "Search by: Title or Author");
                     String userInput = scan.nextLine();
                     userInput = titleOrAuthorValid(userInput);
+
                     if (userInput.equalsIgnoreCase("title")) {
                         System.out.print("Search: ");
                         userInput = scan.nextLine();
                         library.searchTitle(userInput);
                     }
+
                     else if (userInput.equalsIgnoreCase("author")){
                         System.out.print("Search: ");
                         userInput = scan.nextLine();
@@ -53,12 +57,12 @@ public class LibraryApp {
                     int userReturn = Validator.getInt(scan,"\n Enter the number of the book " +
                             "you would like to return:", 1,12);
                     library.returnBook(userReturn);
-
                     break;
                 case 5:
                     System.out.println("Goodbye!");
                     break;
             }
+
             //scan.nextLine();
             System.out.println("\nContinue? Y/N");
             yOrN = scan.nextLine();

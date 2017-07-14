@@ -1,11 +1,7 @@
 import java.util.ArrayList;
 import java.io.*;
-import java.util.Calendar;
-import java.util.Scanner;
-
 public class Library {
     ArrayList<LibraryItem> items = new <LibraryItem>ArrayList();
-
     public Library() {
         getList();
     }
@@ -22,7 +18,6 @@ public class Library {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("books.txt"));
             String readLine = bufferedReader.readLine();
-
             while (readLine != null) {
                 int i = 1;
                 String[] fileValues = readLine.split(",");
@@ -30,17 +25,17 @@ public class Library {
                 String author = fileValues[1];
                 String status = fileValues[2];
 
+
                 LibraryItem bookObject = new LibraryItem(title, author, status);
+
                 items.add(bookObject);
                 readLine = bufferedReader.readLine();
             }
             bufferedReader.close();
         } catch (Exception e) {
             System.out.println("File not found");
-
         }
         return items;
-
     }
 
     public void searchTitle(String userInput) {

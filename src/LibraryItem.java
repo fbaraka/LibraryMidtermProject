@@ -1,6 +1,4 @@
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 /**
  * Created by Rizwan on 7/13/2017.
  */
@@ -16,6 +14,7 @@ public class LibraryItem {
         this.author = author;
         this.status = status;
     }
+
 
     public LibraryItem() {
 
@@ -45,14 +44,17 @@ public class LibraryItem {
         this.status = status;
     }
 
+
     public LocalDate getDueDate() {
         dueDate = LocalDate.now().plusDays(14);
         return dueDate;
     }
 
+
     public void setDueDate(LocalDate dueDate) {
 
         this.dueDate = LocalDate.now().plusDays(14);
     }
+
 
 }

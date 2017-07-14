@@ -1,5 +1,5 @@
-import java.util.Calendar;
-import java.util.Scanner;
+
+
 
 /**
  * Created by Rizwan on 7/13/2017.
@@ -13,6 +13,7 @@ public class Book extends LibraryItem {
     public String toString() {
         return
                 "Title: " + getTitle() + '\n' +
+
                         "Author: " + getAuthor() + '\n'+
                         "Status: " + getStatus() + '\n' ;
     }
