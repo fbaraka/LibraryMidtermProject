@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Scanner;
 /**
  * Created by Feras on 7/12/2017.
@@ -84,5 +85,14 @@ public class LibraryApp {
             userInput = keyboard.nextLine();
         }
         return userInput;
+    }
+   // Library library = new Library();
+    public static void writeToFile(ArrayList<String> list){
+        try{
+
+        }catch(Exception e){
+
+        }
+
     }
 }
