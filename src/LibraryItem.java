@@ -16,8 +16,13 @@ public class LibraryItem {
     }
 
 
-    public LibraryItem() {
-
+    public LibraryItem(String title, String author, String status, String date) {
+        this.title = title;
+        this.author = author;
+        this.status = status;
+        if(!date.equalsIgnoreCase("null")) {
+            this.dueDate = LocalDate.parse(date);
+        }
     }
 
     public String getTitle() {
@@ -46,15 +51,17 @@ public class LibraryItem {
 
 
     public LocalDate getDueDate() {
-        dueDate = LocalDate.now().plusDays(14);
         return dueDate;
     }
 
 
     public void setDueDate(LocalDate dueDate) {
 
-        this.dueDate = LocalDate.now().plusDays(14);
+        this.dueDate = dueDate;
     }
 
-
+//    @Override
+//    public String toString() {
+//        return "" + dueDate;
+//    }
 }
