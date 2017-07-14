@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 /**
  * Created by Feras on 7/12/2017.

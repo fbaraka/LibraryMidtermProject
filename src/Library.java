@@ -1,17 +1,19 @@
 import java.util.ArrayList;
 import java.io.*;
-import java.util.Calendar;
+
 public class Library {
     ArrayList<LibraryItem> items = new <LibraryItem>ArrayList();
     public Library() {
         getList();
     }
+
     public ArrayList<LibraryItem> getItems() {
         return items;
     }
     public void setItems(ArrayList<LibraryItem> items) {
         this.items = items;
     }
+
     public ArrayList<LibraryItem> getList() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("books.txt"));
@@ -23,6 +25,7 @@ public class Library {
                 String author = fileValues[1];
                 String status = fileValues[2];
                 LibraryItem bookObject = new LibraryItem(title,author,status);
+
                 items.add(bookObject);
                 readLine = bufferedReader.readLine();
             }
@@ -32,6 +35,7 @@ public class Library {
         }
         return items;
     }
+
     public void searchTitle(String userInput){
         for(int i = 0; i < items.size(); i++){
             if(items.get(i).getTitle().equalsIgnoreCase(userInput)){
@@ -47,11 +51,13 @@ public class Library {
         }
     }
     public void checkOut(int userInput){
+
         System.out.println(items.get(userInput - 1).getTitle() + " is now checked out.");
         System.out.println("Due Date: " + items.get(userInput - 1).getDueDate());
         items.get(userInput - 1).setStatus("unavailable");
         items.get(userInput - 1).getDueDate();
     }
+
     public void returnBook(int userInput){
         System.out.println(items.get(userInput - 1).getTitle() + " is now returned.");
         items.get(userInput - 1).setDueDate(null);
@@ -65,6 +71,7 @@ public class Library {
                         " Due Date: " + items.get(i).getDueDate());
             }
             else {
+
                 System.out.println((i + 1) + ". " + items.get(i).getTitle() + " " + items.get(i).getAuthor() + " "
                         + items.get(i).getStatus());
             }
