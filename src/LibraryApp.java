@@ -42,7 +42,7 @@ public class LibraryApp {
                     else if (userInput.equalsIgnoreCase("author")){
                         System.out.print("Search: ");
                         userInput = scan.nextLine();
-                        library.searchAuthor(userInput);
+                        //library.searchAuthor(userInput);
                     }
                     break;
                 case 3:
@@ -69,6 +69,7 @@ public class LibraryApp {
             yOrN = scan.nextLine();
             yOrN = yOrNValid(yOrN);
         }while(yOrN.equalsIgnoreCase("y"));
+        library.updatedList(library.items);
     }
     public static String yOrNValid(String yOrN) {
         Scanner keyboard = new Scanner(System.in);

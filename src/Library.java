@@ -1,6 +1,12 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.io.*;
+import java.util.List;
+import java.util.Scanner;
+
 public class Library {
+    public static Scanner scan = new Scanner(System.in);
+
     ArrayList<LibraryItem> items = new <LibraryItem>ArrayList();
     public Library() {
         getList();
@@ -21,18 +27,19 @@ public class Library {
             while (readLine != null) {
                 int i = 1;
                 String[] fileValues = readLine.split(",");
-                String title = fileValues[0];
-                String author = fileValues[1];
-                String status = fileValues[2];
+//                String title = fileValues[0];
+//                String author = fileValues[1];
+//                String status = fileValues[2];
 
 
-                LibraryItem bookObject = new LibraryItem(title, author, status);
+                LibraryItem bookObject = new Book(fileValues[0], fileValues[1], fileValues[2], fileValues[3]);
 
                 items.add(bookObject);
                 readLine = bufferedReader.readLine();
             }
             bufferedReader.close();
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("File not found");
         }
         return items;
@@ -47,18 +54,28 @@ public class Library {
     }
 
     public void searchAuthor(String userInput) {
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).getAuthor().equalsIgnoreCase(userInput)) {
-                System.out.println(items.get(i).getTitle() + " by " + items.get(i).getTitle());
+        StringBuffer stringBuff = new StringBuffer();
+        do {
+            for (int i = 0; i < items.size(); i++) {
+                if (items.get(i).getAuthor().equalsIgnoreCase(userInput)) {
+                    stringBuff.append(items.get(i).getTitle() + " by " + items.get(i).getTitle() + "\n");
+                }
+                if (stringBuff.length() == 0) {
+                    System.out.print("Not found. Try again: ");
+                    userInput = scan.nextLine();
+                } else {
+                    System.out.println(stringBuff.toString());
+                }
             }
-        }
+
+        } while (stringBuff.length() == 0);
     }
+
 
     public void checkOut(int userInput) {
         System.out.println(items.get(userInput - 1).getTitle() + " is now checked out.");
-        System.out.println("Due Date: " + items.get(userInput - 1).getDueDate());
+        items.get(userInput - 1).setDueDate(LocalDate.now().plusDays(14));
         items.get(userInput - 1).setStatus("unavailable");
-        items.get(userInput - 1).getDueDate();
     }
 
     public void returnBook(int userInput) {
@@ -77,6 +94,20 @@ public class Library {
                 System.out.println((i + 1) + ". " + items.get(i).getTitle() + " " + items.get(i).getAuthor() + " "
                         + items.get(i).getStatus());
             }
+        }
+    }
+    public void updatedList(ArrayList<LibraryItem> list){
+        try {
+            File newList = new File("books.txt");
+            FileWriter writer = new FileWriter(newList);
+            BufferedWriter buffer = new BufferedWriter(writer);
+
+            for (LibraryItem x : items) {
+                buffer.write(String.valueOf(x));
+            }
+            buffer.close();
+        }catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
