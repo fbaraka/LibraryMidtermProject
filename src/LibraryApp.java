@@ -12,7 +12,7 @@ public class LibraryApp {
         Scanner scan = new Scanner(System.in);
         String yOrN = "";
         System.out.println("Welcome to The Error's Library!");
-        System.out.println("Please select an option number from the menu");
+        System.out.println("Please enter an option number from the menu");
         do {
 
             //System.out.println("Menu: \n1 -- Display library list\n2 -- Search the library\n3 -- Checkout item from library\n4 -- Return item to library\n5 -- End session");
@@ -29,7 +29,7 @@ public class LibraryApp {
                 case 2:
                     library.numberedList();
                     //scan.nextLine();
-                    System.out.println("\n" + "Search by: Title or Author");
+                    System.out.println("\n" + "Would you like to search by Title or Author?");
                     String userInput = scan.nextLine();
                     userInput = titleOrAuthorValid(userInput);
 
@@ -42,7 +42,7 @@ public class LibraryApp {
                     else if (userInput.equalsIgnoreCase("author")){
                         System.out.print("Search: ");
                         userInput = scan.nextLine();
-                        //library.searchAuthor(userInput);
+                        library.searchAuthor(userInput);
                     }
                     break;
                 case 3:
@@ -87,13 +87,4 @@ public class LibraryApp {
         }
         return userInput;
     }
-   // Library library = new Library();
-    public static void writeToFile(ArrayList<String> list){
-        try{
-
-        }catch(Exception e){
-
-        }
-
-    }
-}
+ }

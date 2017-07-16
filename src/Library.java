@@ -1,7 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.io.*;
-import java.util.List;
 import java.util.Scanner;
 
 public class Library {
@@ -27,10 +26,6 @@ public class Library {
             while (readLine != null) {
                 int i = 1;
                 String[] fileValues = readLine.split(",");
-//                String title = fileValues[0];
-//                String author = fileValues[1];
-//                String status = fileValues[2];
-
 
                 LibraryItem bookObject = new Book(fileValues[0], fileValues[1], fileValues[2], fileValues[3]);
 
@@ -46,30 +41,57 @@ public class Library {
     }
 
     public void searchTitle(String userInput) {
+
+        StringBuffer stringBuff = new StringBuffer();
         for (int i = 0; i < items.size(); i++) {
+
             if (items.get(i).getTitle().equalsIgnoreCase(userInput)) {
-                System.out.println(items.get(i).getTitle() + " by " + items.get(i).getAuthor());
+                stringBuff.append(items.get(i).getTitle() + " by " + items.get(i).getAuthor() + "\n");
+                //System.out.println(items.get(i).getTitle() + " by " + items.get(i).getAuthor());
+
             }
+
         }
+        if (stringBuff.length() == 0) {
+
+            System.out.print("Not found. Try again: ");
+
+            userInput = scan.nextLine();
+
+        } else {
+            System.out.println(stringBuff.toString());
+
+        }
+
     }
+
+
 
     public void searchAuthor(String userInput) {
-        StringBuffer stringBuff = new StringBuffer();
-        do {
-            for (int i = 0; i < items.size(); i++) {
-                if (items.get(i).getAuthor().equalsIgnoreCase(userInput)) {
-                    stringBuff.append(items.get(i).getTitle() + " by " + items.get(i).getTitle() + "\n");
-                }
-                if (stringBuff.length() == 0) {
-                    System.out.print("Not found. Try again: ");
-                    userInput = scan.nextLine();
-                } else {
-                    System.out.println(stringBuff.toString());
-                }
-            }
 
-        } while (stringBuff.length() == 0);
-    }
+        StringBuffer stringBuff = new StringBuffer();
+        for (int i = 0; i < items.size(); i++) {
+
+            if (items.get(i).getAuthor().equalsIgnoreCase(userInput)) {
+
+                stringBuff.append(items.get(i).getTitle() + " by " + items.get(i).getAuthor() + "\n");
+                //System.out.println(items.get(i).getTitle() + " by " + items.get(i).getAuthor());
+
+            }
+        }
+
+            if (stringBuff.length() == 0) {
+
+                System.out.print("Not found. Try again: ");
+
+                userInput = scan.nextLine();
+
+            } else {
+                System.out.println(stringBuff.toString());
+
+            }
+        }
+
 
 
     public void checkOut(int userInput) {
