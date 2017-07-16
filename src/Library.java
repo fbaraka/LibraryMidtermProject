@@ -10,15 +10,7 @@ public class Library {
     public Library() {
         getList();
     }
-
-    public ArrayList<LibraryItem> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<LibraryItem> items) {
-        this.items = items;
-    }
-
+    //reads file called books.txt, puts what's separated by commas into variables, which is then put into a book object
     public ArrayList<LibraryItem> getList() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("books.txt"));
@@ -39,68 +31,46 @@ public class Library {
         }
         return items;
     }
-
     public void searchTitle(String userInput) {
-
         StringBuffer stringBuff = new StringBuffer();
         for (int i = 0; i < items.size(); i++) {
-
-            if (items.get(i).getTitle().equalsIgnoreCase(userInput)) {
-                stringBuff.append(items.get(i).getTitle() + " by " + items.get(i).getAuthor() + "\n");
-                //System.out.println(items.get(i).getTitle() + " by " + items.get(i).getAuthor());
-
+                if (items.get(i).getTitle().toLowerCase().contains(userInput.toLowerCase())) {
+                    stringBuff.append(items.get(i).getTitle() + " by " + items.get(i).getAuthor() + "\n");
+                }
             }
-
-        }
-        if (stringBuff.length() == 0) {
-
-            System.out.print("Not found. Try again: ");
-
-            userInput = scan.nextLine();
-
-        } else {
-            System.out.println(stringBuff.toString());
-
-        }
-
-    }
-
-
-
-    public void searchAuthor(String userInput) {
-
-        StringBuffer stringBuff = new StringBuffer();
-        for (int i = 0; i < items.size(); i++) {
-
-            if (items.get(i).getAuthor().equalsIgnoreCase(userInput)) {
-
-                stringBuff.append(items.get(i).getTitle() + " by " + items.get(i).getAuthor() + "\n");
-                //System.out.println(items.get(i).getTitle() + " by " + items.get(i).getAuthor());
-
-            }
-        }
-
+            //if the user enters wrong title/keyword, will prompt the user to go back to main menu and try again
             if (stringBuff.length() == 0) {
-
-                System.out.print("Not found. Try again: ");
-
+                System.out.print("Not found. Going back to main menu. ");
                 userInput = scan.nextLine();
-
             } else {
                 System.out.println(stringBuff.toString());
+            }
+    }
+    public void searchAuthor(String userInput) {
+        StringBuffer stringBuff = new StringBuffer();
+        for (int i = 0; i < items.size(); i++) {
 
+            if (items.get(i).getAuthor().toLowerCase().contains(userInput.toLowerCase())) {
+                stringBuff.append(items.get(i).getTitle() + " by " + items.get(i).getAuthor() + "\n");
             }
         }
-
-
-
+        //if the user enters wrong title/keyword, will prompt the user to go back to main menu and try again
+            if (stringBuff.length() == 0) {
+                System.out.print("Not found. Going back to menu ");
+                userInput = scan.nextLine();
+            } else {
+                System.out.println(stringBuff.toString());
+            }
+    }
     public void checkOut(int userInput) {
+        //if user chooses to checkout a book, it will set due date 14 days ahead of current date.
         System.out.println(items.get(userInput - 1).getTitle() + " is now checked out.");
         items.get(userInput - 1).setDueDate(LocalDate.now().plusDays(14));
         items.get(userInput - 1).setStatus("unavailable");
     }
 
     public void returnBook(int userInput) {
+        //if user chooses to return a book, the status is set to available
         System.out.println(items.get(userInput - 1).getTitle() + " is now returned.");
         items.get(userInput - 1).setDueDate(null);
         items.get(userInput - 1).setStatus("available");

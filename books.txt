@@ -9,4 +9,4 @@ The Child Called It,Dave Pelzer,available,null
 Junie B. Jones and Her Big Fat Mouth,Barbara Park,available,null
 Ender's Game,Orson Scott Card,available,null
 Life of Pi,Yann Martel,available,null
-Parable of the Sower,Octavia Butler,available,null
+Parable of the Sower,Octavia Butler,unavailable,2017-07-30
