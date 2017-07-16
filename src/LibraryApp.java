@@ -65,7 +65,7 @@ public class LibraryApp {
             }
 
             //scan.nextLine();
-            System.out.println("\nContinue? Y/N");
+            System.out.println("\nGo to main menu? Y/N");
             yOrN = scan.nextLine();
             yOrN = yOrNValid(yOrN);
         }while(yOrN.equalsIgnoreCase("y"));
