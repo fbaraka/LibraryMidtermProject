@@ -1,5 +1,5 @@
-Harry Potter and The Sorcerer's Stone,J.K. Rowling,available,null
-Harry Potter and the Chamber of Secrets,J.K. Rowling,available,null
+Harry Potter and The Sorcerer's Stone,J.K. Rowling,unavailable,2017-07-29
+Harry Potter and the Chamber of Secrets,J.K. Rowling,unavailable,2017-07-29
 Harry Potter and the Prisoner of Azkaban,J.K. Rowling,available,null
 Harry Potter and the Goblet of Fire,J.K. Rowling,available,null
 Harry Potter and the Order of the Phoenix,J.K. Rowling,available,null
@@ -7,6 +7,6 @@ Harry Potter and the Half Blood Prince,J.K. Rowling,available,null
 Harry Potter and the Deathly Hallows,J.K. Rowling,available,null
 The Child Called It,Dave Pelzer,available,null
 Junie B. Jones and Her Big Fat Mouth,Barbara Park,available,null
-Ender's Game,Orson Scott Card,unavailable,2017-07-28
+Ender's Game,Orson Scott Card,available,null
 Life of Pi,Yann Martel,available,null
 Parable of the Sower,Octavia Butler,available,null
